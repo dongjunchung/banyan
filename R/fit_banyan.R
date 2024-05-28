@@ -23,7 +23,7 @@
 #' @export
 #' @return A list of MCMC samples, including the MAP estimate of cluster indicators (z)
 #' 
-fit_banyan <- function(seurat_obj = NULL,
+fit_banyan_exp <- function(seurat_obj = NULL,
                        labels = NULL,
                        exp = NULL,
                        coords_df = NULL,
@@ -39,7 +39,7 @@ fit_banyan <- function(seurat_obj = NULL,
                        verbose = TRUE,
                        s = 1.2)
 {
-
+  
   # user provides a Seurat object
   if(!is.null(seurat_obj))
   {
@@ -47,27 +47,7 @@ fit_banyan <- function(seurat_obj = NULL,
     if(!is.null(seurat_obj@reductions$pca))
     {
       exp <- seurat_obj@reductions$pca@cell.embeddings[,1:n_pcs]
-      if(is.null(labels))
-      {
-        message("Initializing")
-        # check resolutions for inits
-        seurat_obj <- FindNeighbors(seurat_obj)
-        initialized = FALSE
-        while(!initialized)
-        {
-          seurat_obj <- FindClusters(seurat_obj, resolution = s)
-          zinit = seurat_obj$seurat_clusters
-          K_found = length(unique(zinit))
-          if(K_found > K)
-          {
-            initialized = TRUE
-          }
-          else
-          {
-            s = s*1.05
-          }
-        } 
-      }
+      
     }
     else
     {
@@ -80,13 +60,10 @@ fit_banyan <- function(seurat_obj = NULL,
     }
     else
     {
-      coords_x <- seurat_obj@images[[1]]@coordinates[,1]
-      coords_y <- seurat_obj@images[[1]]@coordinates[,2]
-      coords <- data.frame(x = coords_x,
-                           y = coords_y)
+      coords<-as.data.frame(GetTissueCoordinates(seurat_obj))
+      coords <- coords[,c(2,1)]
       n <- nrow(coords)
     }
-    
     # set number of neighbors
     if(is.null(R))
     {
@@ -107,7 +84,6 @@ fit_banyan <- function(seurat_obj = NULL,
         r2 <- round(R[2])
       }
     }
-    
     # build networks
     # gene expression
     exp <- as.matrix(exp)
@@ -118,6 +94,9 @@ fit_banyan <- function(seurat_obj = NULL,
     
     # compile into multi-layer network
     AL <- list(A1,A2)
+    zinit <- z_init   
+    
+
   }
   else
   {
@@ -148,14 +127,8 @@ fit_banyan <- function(seurat_obj = NULL,
     # compile into multi-layer network
     AL <- list(A1,A2)
     coords <- coords_df
-    if(!is.null(z_init))
-    {
-      zinit <- z_init
-    }
-    else
-    {
-      zinit <- sample(1:K, size = nrow(coords), replace = TRUE)
-    }
+    zinit <- z_init
+    
   }
   
   if(!is.null(labels))
