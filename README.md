@@ -8,7 +8,7 @@ The `banyan` package allows for network-based Bayesian analysis of spatially res
 The `banyan` package can be installed directly from this repository using `devtools`.
 
 ```
-devtools::install_github("carter-allen/banyan")
+devtools::install_github("dongjunchung/banyan")
 ```
 
 ## Requirements
