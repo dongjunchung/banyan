@@ -13,7 +13,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // logf_z_given_A
 double logf_z_given_A(NumericVector zs, List A, NumericVector pis, NumericMatrix Ps);
-RcppExport SEXP _mlsbm_logf_z_given_A(SEXP zsSEXP, SEXP ASEXP, SEXP pisSEXP, SEXP PsSEXP) {
+RcppExport SEXP _banyan_logf_z_given_A(SEXP zsSEXP, SEXP ASEXP, SEXP pisSEXP, SEXP PsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -27,7 +27,7 @@ END_RCPP
 }
 // logf_z_given_A_single
 double logf_z_given_A_single(NumericVector zs, NumericMatrix A, NumericVector pis, NumericMatrix Ps);
-RcppExport SEXP _mlsbm_logf_z_given_A_single(SEXP zsSEXP, SEXP ASEXP, SEXP pisSEXP, SEXP PsSEXP) {
+RcppExport SEXP _banyan_logf_z_given_A_single(SEXP zsSEXP, SEXP ASEXP, SEXP pisSEXP, SEXP PsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -41,7 +41,7 @@ END_RCPP
 }
 // rdirichlet_cpp
 arma::mat rdirichlet_cpp(int num_samples, arma::vec alpha_m);
-RcppExport SEXP _mlsbm_rdirichlet_cpp(SEXP num_samplesSEXP, SEXP alpha_mSEXP) {
+RcppExport SEXP _banyan_rdirichlet_cpp(SEXP num_samplesSEXP, SEXP alpha_mSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -51,101 +51,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// sample_SBM_fast
-NumericVector sample_SBM_fast(NumericVector z, NumericMatrix P);
-RcppExport SEXP _mlsbm_sample_SBM_fast(SEXP zSEXP, SEXP PSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type z(zSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type P(PSEXP);
-    rcpp_result_gen = Rcpp::wrap(sample_SBM_fast(z, P));
-    return rcpp_result_gen;
-END_RCPP
-}
-// POW
-double POW(NumericMatrix Ps, double p);
-RcppExport SEXP _mlsbm_POW(SEXP PsSEXP, SEXP pSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type Ps(PsSEXP);
-    Rcpp::traits::input_parameter< double >::type p(pSEXP);
-    rcpp_result_gen = Rcpp::wrap(POW(Ps, p));
-    return rcpp_result_gen;
-END_RCPP
-}
-// logPow
-double logPow(NumericMatrix Ps, double p);
-RcppExport SEXP _mlsbm_logPow(SEXP PsSEXP, SEXP pSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type Ps(PsSEXP);
-    Rcpp::traits::input_parameter< double >::type p(pSEXP);
-    rcpp_result_gen = Rcpp::wrap(logPow(Ps, p));
-    return rcpp_result_gen;
-END_RCPP
-}
-// isFinite
-LogicalVector isFinite(NumericVector x);
-RcppExport SEXP _mlsbm_isFinite(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(isFinite(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fix_NAs
-NumericVector fix_NAs(NumericVector x);
-RcppExport SEXP _mlsbm_fix_NAs(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(fix_NAs(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// is_any
-LogicalVector is_any(NumericVector x, double c);
-RcppExport SEXP _mlsbm_is_any(SEXP xSEXP, SEXP cSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    Rcpp::traits::input_parameter< double >::type c(cSEXP);
-    rcpp_result_gen = Rcpp::wrap(is_any(x, c));
-    return rcpp_result_gen;
-END_RCPP
-}
-// whichmax
-double whichmax(NumericVector x);
-RcppExport SEXP _mlsbm_whichmax(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(whichmax(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fixpi
-NumericVector fixpi(NumericVector pi_star);
-RcppExport SEXP _mlsbm_fixpi(SEXP pi_starSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type pi_star(pi_starSEXP);
-    rcpp_result_gen = Rcpp::wrap(fixpi(pi_star));
-    return rcpp_result_gen;
-END_RCPP
-}
 // update_P
 NumericMatrix update_P(List A, NumericVector zs, int K0, double b10, double b20);
-RcppExport SEXP _mlsbm_update_P(SEXP ASEXP, SEXP zsSEXP, SEXP K0SEXP, SEXP b10SEXP, SEXP b20SEXP) {
+RcppExport SEXP _banyan_update_P(SEXP ASEXP, SEXP zsSEXP, SEXP K0SEXP, SEXP b10SEXP, SEXP b20SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -160,7 +68,7 @@ END_RCPP
 }
 // update_P_single
 NumericMatrix update_P_single(NumericMatrix A, NumericVector zs, int K0, double b10, double b20);
-RcppExport SEXP _mlsbm_update_P_single(SEXP ASEXP, SEXP zsSEXP, SEXP K0SEXP, SEXP b10SEXP, SEXP b20SEXP) {
+RcppExport SEXP _banyan_update_P_single(SEXP ASEXP, SEXP zsSEXP, SEXP K0SEXP, SEXP b10SEXP, SEXP b20SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -175,7 +83,7 @@ END_RCPP
 }
 // update_counts
 NumericVector update_counts(NumericVector zs, int K0);
-RcppExport SEXP _mlsbm_update_counts(SEXP zsSEXP, SEXP K0SEXP) {
+RcppExport SEXP _banyan_update_counts(SEXP zsSEXP, SEXP K0SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -187,7 +95,7 @@ END_RCPP
 }
 // update_z
 NumericVector update_z(NumericVector zs, List A, NumericMatrix Ps, NumericVector pis, NumericVector classes);
-RcppExport SEXP _mlsbm_update_z(SEXP zsSEXP, SEXP ASEXP, SEXP PsSEXP, SEXP pisSEXP, SEXP classesSEXP) {
+RcppExport SEXP _banyan_update_z(SEXP zsSEXP, SEXP ASEXP, SEXP PsSEXP, SEXP pisSEXP, SEXP classesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -202,7 +110,7 @@ END_RCPP
 }
 // update_z_single
 NumericVector update_z_single(NumericVector zs, NumericMatrix A, NumericMatrix Ps, NumericVector pis, NumericVector classes);
-RcppExport SEXP _mlsbm_update_z_single(SEXP zsSEXP, SEXP ASEXP, SEXP PsSEXP, SEXP pisSEXP, SEXP classesSEXP) {
+RcppExport SEXP _banyan_update_z_single(SEXP zsSEXP, SEXP ASEXP, SEXP PsSEXP, SEXP pisSEXP, SEXP classesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -217,26 +125,18 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_mlsbm_logf_z_given_A", (DL_FUNC) &_mlsbm_logf_z_given_A, 4},
-    {"_mlsbm_logf_z_given_A_single", (DL_FUNC) &_mlsbm_logf_z_given_A_single, 4},
-    {"_mlsbm_rdirichlet_cpp", (DL_FUNC) &_mlsbm_rdirichlet_cpp, 2},
-    {"_mlsbm_sample_SBM_fast", (DL_FUNC) &_mlsbm_sample_SBM_fast, 2},
-    {"_mlsbm_POW", (DL_FUNC) &_mlsbm_POW, 2},
-    {"_mlsbm_logPow", (DL_FUNC) &_mlsbm_logPow, 2},
-    {"_mlsbm_isFinite", (DL_FUNC) &_mlsbm_isFinite, 1},
-    {"_mlsbm_fix_NAs", (DL_FUNC) &_mlsbm_fix_NAs, 1},
-    {"_mlsbm_is_any", (DL_FUNC) &_mlsbm_is_any, 2},
-    {"_mlsbm_whichmax", (DL_FUNC) &_mlsbm_whichmax, 1},
-    {"_mlsbm_fixpi", (DL_FUNC) &_mlsbm_fixpi, 1},
-    {"_mlsbm_update_P", (DL_FUNC) &_mlsbm_update_P, 5},
-    {"_mlsbm_update_P_single", (DL_FUNC) &_mlsbm_update_P_single, 5},
-    {"_mlsbm_update_counts", (DL_FUNC) &_mlsbm_update_counts, 2},
-    {"_mlsbm_update_z", (DL_FUNC) &_mlsbm_update_z, 5},
-    {"_mlsbm_update_z_single", (DL_FUNC) &_mlsbm_update_z_single, 5},
+    {"_banyan_logf_z_given_A", (DL_FUNC) &_banyan_logf_z_given_A, 4},
+    {"_banyan_logf_z_given_A_single", (DL_FUNC) &_banyan_logf_z_given_A_single, 4},
+    {"_banyan_rdirichlet_cpp", (DL_FUNC) &_banyan_rdirichlet_cpp, 2},
+    {"_banyan_update_P", (DL_FUNC) &_banyan_update_P, 5},
+    {"_banyan_update_P_single", (DL_FUNC) &_banyan_update_P_single, 5},
+    {"_banyan_update_counts", (DL_FUNC) &_banyan_update_counts, 2},
+    {"_banyan_update_z", (DL_FUNC) &_banyan_update_z, 5},
+    {"_banyan_update_z_single", (DL_FUNC) &_banyan_update_z_single, 5},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_mlsbm(DllInfo *dll) {
+RcppExport void R_init_banyan(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

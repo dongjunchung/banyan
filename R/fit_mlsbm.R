@@ -10,17 +10,13 @@
 #' @param n_iter The number of total MCMC iterations to run.
 #' @param burn The number of burn-in MCMC iterations to discard. The number of saved iterations will be n_iter - burn.
 #' @param verbose Whether to print a progress bar to track MCMC progress. Defaults to true.
-#' @param r Resolution parameter for Louvain initialization. Sould be >= 0 and higher values give a larger number of smaller clusters.
+#' @param r Resolution parameter for Louvain initialization. Should be >= 0 and higher values give a larger number of smaller clusters.
 #' @keywords SBM MLSBM Gibbs Bayesian networks 
 #' @importFrom utils setTxtProgressBar txtProgressBar
 #' @importFrom igraph graph_from_adjacency_matrix cluster_louvain
 #' @importFrom bluster mergeCommunities
 #' @export
 #' @return A list of MCMC samples, including the MAP estimate of cluster indicators (z)
-#' @examples
-#' data(AL)
-#' # increase n_iter in practice
-#' fit <- fit_mlsbm(AL,3,n_iter = 100)
 fit_mlsbm <- function(A,
                       K,
                       z_init = NULL,

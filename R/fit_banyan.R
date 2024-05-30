@@ -18,12 +18,11 @@
 #' @param s Louvain resolution parameter
 #'
 #' @keywords SBM MLSBM Gibbs Bayesian networks spatial gene expression
-#' @importFrom mlsbm fit_mlsbm
-#' @importFrom Seurat FindNeighbors FindClusters
+#' @importFrom Seurat GetTissueCoordinates
 #' @export
 #' @return A list of MCMC samples, including the MAP estimate of cluster indicators (z)
 #' 
-fit_banyan_exp <- function(seurat_obj = NULL,
+fit_banyan <- function(seurat_obj = NULL,
                        labels = NULL,
                        exp = NULL,
                        coords_df = NULL,
@@ -141,7 +140,7 @@ fit_banyan_exp <- function(seurat_obj = NULL,
   }
   else
   {
-    fit <- mlsbm::fit_mlsbm(A = AL,
+    fit <- fit_mlsbm(A = AL,
                             K = K,
                             z_init = zinit,
                             a0 = a0,
