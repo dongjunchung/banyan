@@ -11,6 +11,7 @@ The `banyan` package can be installed directly from this repository using `devto
 devtools::install_github("dongjunchung/banyan")
 ```
 
+banyan package installation validated under R version 4.3, ‘Seurat’ package of version >= 4.3.0 and the ‘Matrix’ package version >= 1.6.1. 
 ## Requirements
 
 The `igraph` package is used to handle standard network routines and initialization. Note, due to the need for a resolution parameter in the initialization of cluster allocations with `igraph::cluster_louvain()` the [development version](https://carter-allen.github.io/igraph_1.2.5.louvain_resolution.tar.gz) of `igraph` must be installed. See [here](https://github.com/igraph/rigraph/issues/239) for more details.
