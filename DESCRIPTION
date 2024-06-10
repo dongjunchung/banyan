@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0001-6937-7234")),
       person(given = "Kyeong Joo",
            family = "Jung",
-           role = c("cre"),
+           role = c("aut"),
            email = "iamkj0829@gmail.com"),
      person(given = "Dongjun",
            family = "Chung",
@@ -23,4 +23,4 @@ RoxygenNote: 7.3.1
 LinkingTo: Rcpp, RcppArmadillo
 Imports: igraph, stats, Seurat, bluster, dplyr, ggplot2, tidyr, tidyselect, rlang, patchwork, ggplotify, pheatmap, ggraph, shiny, plotly,Rcpp
 Depends: 
-    R (>= 4.0.0)
+    R (>= 4.3.0)
